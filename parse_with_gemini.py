@@ -13,17 +13,17 @@ api_key = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 class CutlineRow(BaseModel):
-    announcement_year:  Optional[int]   = Field(None, description="공고연도 (예: 2021, 2022)")
-    announcement_phase: Optional[str]   = Field(None, description="공고차수 (예: '1차', '2차')")
-    complex_name:       str             = Field(description="단지명")
-    district:           str             = Field(description="자치구 (예: 강남구, 마포구)")
-    housing_type:       str             = Field(description="주택형 면적 (예: '59', '39S')")
-    supply_target:      str             = Field(description="신청자격 (청년/신혼부부/고령자/대학생/주거급여수급자)")
-    supply_type:        str             = Field(description="구분: '우선' 또는 '일반'")
-    cutline_rank:       Optional[int]   = Field(None, description="커트라인 순위 (1, 2, 3). 없으면 null")
-    cutline_score:      Optional[float] = Field(None, description="커트라인 점수. 없으면 null")
-    tie_breaker:        Optional[str]   = Field(None, description="동점자 기준 (추첨/전입일자/거주기간/전원합격 등)")
-    tie_breaker_value:  Optional[str]   = Field(None, description="동점자 기준값 날짜/기간. 없으면 null")
+    announcement_year: Optional[int] = Field(None, description="공고연도 (예: 2021, 2022)")
+    announcement_phase: Optional[str] = Field(None, description="공고차수 (예: '1차', '2차')")
+    complex_name: str = Field(description="단지명")
+    district: str = Field(description="자치구 (예: 강남구, 마포구)")
+    housing_type: str = Field(description="주택형 면적 (예: '59', '39S')")
+    supply_target: str = Field(description="신청자격 (청년/신혼부부/고령자/대학생/주거급여수급자)")
+    supply_type: str = Field(description="구분: '우선' 또는 '일반'")
+    cutline_rank: Optional[int] = Field(None, description="커트라인 순위 (1, 2, 3). 없으면 null")
+    cutline_score:Optional[float] = Field(None, description="커트라인 점수. 없으면 null")
+    tie_breaker: Optional[str] = Field(None, description="동점자 기준 (추첨/전입일자/거주기간/전원합격 등)")
+    tie_breaker_value: Optional[str] = Field(None, description="동점자 기준값 날짜/기간. 없으면 null")
 
 class CutlinePage(BaseModel):
     rows: List[CutlineRow]
