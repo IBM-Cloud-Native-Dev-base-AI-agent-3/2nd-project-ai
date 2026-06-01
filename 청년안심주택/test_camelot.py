@@ -1,10 +1,9 @@
-# test_camelot.py
-import camelot
+import pdfplumber
 
-pdf_path = "청년안심주택/2024년 3차 청년안심주택 서류심사대상자 커트라인.pdf"
-tables = camelot.read_pdf(pdf_path, flavor="lattice", pages="all")
+pdf_path = "청년안심주택/2023년 2차 청년안심주택 당첨자 커트라인.pdf"
 
-print(f"표 개수: {len(tables)}")
-for i, table in enumerate(tables):
-    print(f"\n--- 표 {i+1} ---")
-    print(table.df)
+with pdfplumber.open(pdf_path) as pdf:
+    for i, page in enumerate(pdf.pages):
+        text = page.extract_text()
+        print(f"\n=== 페이지 {i+1} ===")
+        print(text)
